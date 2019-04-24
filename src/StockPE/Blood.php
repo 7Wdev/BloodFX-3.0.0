@@ -30,7 +30,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\math\Vector3;
 
 //we have to open a class , cuz pocketmine will search it to enable the plugin !
-public class Blood extends PluginBase implements Listener {
+class Blood extends PluginBase implements Listener {
 
   //we have to enable the plugin !
   public function onEnable()
@@ -39,11 +39,6 @@ public class Blood extends PluginBase implements Listener {
       $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
-    private $plugin;
-
-  public function __construct(BloodFX $plugin){
-  		$this->plugin = $plugin;
-  	}
 
   public function onDamage(EntityDamageEvent $event)
     {
@@ -52,7 +47,7 @@ public class Blood extends PluginBase implements Listener {
   		    return false;
   	    }
   		$entity = $event->getEntity();
-      $this->plugin->getBloodFX($entity, $event->getDamage());
+      $this->getBloodFX($entity, $event->getDamage());
     }
 }
 ?>
